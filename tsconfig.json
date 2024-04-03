@@ -20,7 +20,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "types":[
+      "puppeteer",
+      "jest-environment-puppeteer",
+      "expect-puppeteer"
+    ]
   },
   "include": ["src", "jest.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
