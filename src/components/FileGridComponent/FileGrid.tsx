@@ -100,12 +100,12 @@ export default function FileGrid({ oldFiles, name = "files" }: FileGridProps) {
     />
   ))
   return (
-    <section className={styles.container}>
+    <section className={styles.container} data-testid="filegrid-container">
       <div {...getRootProps({ className: styles.dropzone })}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} data-testid="file-input"/>
         {(!files?.length && !oldFiles?.length) ? (
           <div className={styles.uploadOptions}>
-            <SvgIcon iconName="upload" />
+            <SvgIcon iconName="file-input" />
             <h3>Drag files to upload</h3>
             <div className={styles.optionSeparator}>
               <div className={styles.horizontalLine}></div>
