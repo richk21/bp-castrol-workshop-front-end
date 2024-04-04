@@ -100,7 +100,7 @@ export default function FileGrid({ oldFiles, name = "files" }: FileGridProps) {
     />
   ))
   return (
-    <section className={styles.container}>
+    <section className={styles.container} role="filegrid-container">
       <div {...getRootProps({ className: styles.dropzone })}>
         <input {...getInputProps()} />
         {(!files?.length && !oldFiles?.length) ? (
