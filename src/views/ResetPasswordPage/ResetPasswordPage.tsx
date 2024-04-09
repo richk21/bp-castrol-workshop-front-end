@@ -56,6 +56,7 @@ const ResetPasswordPage: React.FC = () => {
   const [otpActivated, setOtpActivated] = useState(false);
   // const { sendAlert } = useContext(AlertContext) as AlertContextProps;
   const [isAllFieldsValid, setIsAllFieldsValid] = useState(false);
+  const [isAll4FieldsValid, setIsAll4FieldsValid] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [otpTimer, setOtpTimer] = useState("02:00");
   const [loading, setLoading] = useState(false);
@@ -73,6 +74,7 @@ const ResetPasswordPage: React.FC = () => {
   const mobile = watch("user_mobile");
   const pass = watch("user_password");
   const confirmpass = watch("user_password_confirm");
+  const otp = watch("otp");
   const inputSize = useScreenSize();
 
   useEffect(() => {
@@ -90,6 +92,19 @@ const ResetPasswordPage: React.FC = () => {
       setIsAllFieldsValid(false);
     }
   }, [email, mobile, pass, confirmpass, errors]);
+
+  useEffect(() => {
+    // if all three fields are filled and valid, enables GET OTP button
+    console.log(errors);
+    if (
+      isAllFieldsValid &&
+      otp
+    ) {
+      setIsAll4FieldsValid(true);
+    } else {
+      setIsAll4FieldsValid(false);
+    }
+  }, [otp]);
 
   //Handles all three buttons
   //Get OTP Button
@@ -193,8 +208,8 @@ const ResetPasswordPage: React.FC = () => {
             onClick={() => setPhoneReset((s) => !s)}
           >
             {!phoneReset
-              ? "send otp to mobile instead?"
-              : "send otp to email instead?"}
+              ? "Send OTP to mobile instead?"
+              : "Send OTP to email instead?"}
           </p>
           {inputs.map((input) => renderInput(input, { register, errors }))}
 
@@ -268,6 +283,7 @@ const ResetPasswordPage: React.FC = () => {
               }
               type="solid"
               action="submit"
+              disabled={!isAll4FieldsValid}
             />
           </div>
         </form>

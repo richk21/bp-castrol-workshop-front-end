@@ -61,6 +61,7 @@ const SignupPage: React.FC = () => {
   const [otpActivated, setOtpActivated] = useState(false);
   const { sendAlert } = useContext(AlertContext) as AlertContextProps;
   const [isAllFieldsValid, setIsAllFieldsValid] = useState(false);
+  const [isAll4FieldsValid, setIsAll4FieldsValid] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [otpTimer, setOtpTimer] = useState("02:00");
   const [loading, setLoading] = useState(false);
@@ -78,6 +79,7 @@ const SignupPage: React.FC = () => {
   const mobile = watch("user_mobile");
   const pass = watch("user_password");
   const confirmpass = watch("user_password_confirm");
+  const otp = watch("otp");
   const inputSize = useScreenSize();
 
   useEffect(() => {
@@ -95,6 +97,19 @@ const SignupPage: React.FC = () => {
       setIsAllFieldsValid(false);
     }
   }, [email,mobile, pass, confirmpass, errors]);
+
+  useEffect(() => {
+    // if all three fields are filled and valid, enables SIGN UP button with a valid input in OTP field.
+    console.log(errors);
+    if (
+      isAllFieldsValid &&
+      otp
+      ) {
+      setIsAll4FieldsValid(true);
+    } else {
+      setIsAll4FieldsValid(false);
+    }
+  }, [otp]);
 
   //Handles all three buttons
   //Get OTP Button
@@ -172,7 +187,7 @@ const SignupPage: React.FC = () => {
     setLoading(false);
     if (result == "success") {
       sendAlert({
-        message: "SignUp was successful",
+        message: "Sign up was successful",
         type: "success",
       });
       navigate("/login", { replace: true ,state:{phoneLogin:phoneSignup}});
@@ -209,8 +224,8 @@ const SignupPage: React.FC = () => {
               onClick={() => setPhoneSignup((s) => !s)}
             >
               {!phoneSignup
-                ? "SignUp using mobile instead?"
-                : "SignUp using email instead?"}
+                ? "Sign up with mobile instead?"
+                : "Sign up with email instead?"}
             </p>
           {inputs.map((input) => renderInput(input, { register, errors }))}
 
@@ -230,6 +245,10 @@ const SignupPage: React.FC = () => {
               required={true}
               validationSchema={{
                 required: true,
+                pattern:{
+                  value:/^[0-9]{6}$/,
+                  message:"Enter only numbers",
+                },
                 minLength: {
                   value: 6,
                   message: "Enter 6 digit OTP.",
@@ -282,6 +301,7 @@ const SignupPage: React.FC = () => {
               type="solid"
               iconimg="signup_icon"
               action="submit"
+              disabled={!isAll4FieldsValid}
             />
             <span>or</span>
             <span>Already have an account?</span>

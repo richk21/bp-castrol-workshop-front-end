@@ -9,6 +9,8 @@ const LoginPageFields: Input[] = [
     text_type: "string",
     placeholder: "raj_car@gmail.com",
     label: "Email ID",
+    errorMessage:"Enter valid email address.",
+    pattern:/^[\w.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     datatestid: "loginemailid",
     required: true,
   },
@@ -40,7 +42,6 @@ const LoginPageFields: Input[] = [
     name: "remember_me?",
     type: "checkbox",
     label: "Remember me?",
-    errorMessage: "remember me error",
     required: false,
   },
 ];

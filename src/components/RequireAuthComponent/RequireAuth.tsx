@@ -16,7 +16,7 @@ export default function RequireAuth({
   if (requireAuth) {
     if (!currentUser) {
       sendAlert({
-        message: "Your need to login before you apply",
+        message: "You need to login before applying",
         type: "error",
       });
       return <Navigate to="/login" state={{ from: location }} replace />;

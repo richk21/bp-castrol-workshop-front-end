@@ -101,7 +101,7 @@ const ApplicationFormInputFields: Input[] = [
     type: "text",
     text_type: "text",
     placeholder: "04422221234",
-    errorMessage: "Mobile No. should be 10-12 digit(including country code)!",
+    errorMessage: "Mobile no. should be 10-12 digit(including country code)!",
     label: "Your telephone number",
     //minlen:15,
     //maxlen:16,
@@ -119,7 +119,7 @@ const ApplicationFormInputFields: Input[] = [
     type: "text",
     text_type: "number",
     placeholder: "4",
-    errorMessage: "Please enter a valid number of bays!",
+    errorMessage: "Please enter a valid number of bays.",
     label: "Number of bays in your workshop",
     pattern: /\d{1,10}/,
     minlen: 1,
@@ -225,7 +225,6 @@ const ApplicationFormInputFields: Input[] = [
     type: "checkbox",
     label:
       "I consent to having my data processed according to the privacy statement",
-    //errorMessage:"Click to continue.",
     datatestid: "appuploadconsentdata",
     required: true,
   },
@@ -236,7 +235,6 @@ const ApplicationFormInputFields: Input[] = [
     type: "checkbox",
     label:
       "I consent to being contacted by a Castrol distributor for the purpose of discussing my interest in joining the Castrol network",
-    //errorMessage:"Click to continue.",
     datatestid: "appuploadconsentcontacted",
     required: true,
   },
@@ -247,7 +245,6 @@ const ApplicationFormInputFields: Input[] = [
     type: "checkbox",
     label:
       "I am interested in receiving additional information by email on Castrol products or services from time to time",
-    //errorMessage:"Click to continue.",
     datatestid: "appuploadconsentrecinfo",
     required: false,
   },

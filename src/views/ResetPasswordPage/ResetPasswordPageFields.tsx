@@ -7,11 +7,11 @@ const SignupPageFields: Input[] = [{
     type: "text",
     text_type: "string",
     placeholder: "raj_car@gmail.com",
-    errorMessage:"email id should be of minimum 5 characters.",
+    errorMessage:"Email address must be at least 5 characters long.",
     label: "Email ID",
     minlen:5,
     maxlen:100,
-    pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    pattern: /^[\w.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     datatestid:'signupemailid',
     required: true,
 },{
@@ -34,10 +34,10 @@ const SignupPageFields: Input[] = [{
     type: "text",
     text_type: "password",
     placeholder: "Enter password",
-    pattern: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()-_=+{}|;:'",.<>?]).{10,100}$/, //contains 1-special char, capital letter, number and should have 10 to 100 characters
+    pattern: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9\s]).{10,}$/, //contains 1-special char, capital letter, number and should have minimum 10 characters
     minlen:10,
     maxlen:100,
-    errorMessage: "Password should be 10 characters long. Add special characters, number and Capital Letters.",
+    errorMessage: "Your password must contain at least 10 characters and include a mix of uppercase letters, lowercase letters, numbers, and special characters",
     label: "Enter Password",
     datatestid:'signuppassword',
     required: true,
@@ -61,7 +61,6 @@ export const checkboxInputs: Input[] = [{
   name: "delete_warning",
   type: "checkbox",
   label: "I understand that changing my password will log me out in my other devices.",
-  errorMessage: "remember me error",
   required: false,
 }]
 export default SignupPageFields;

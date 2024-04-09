@@ -7,11 +7,11 @@ const SignupPageFields: Input[] = [{
     type: "text",
     text_type: "string",
     placeholder: "raj_car@gmail.com",
-    errorMessage:"email id should be of minimum 5 characters.",
+    errorMessage:"Email address should be of minimum 5 characters.",
     label: "Email ID",
     minlen:5,
     maxlen:100,
-    pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    pattern: /^[\w.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     datatestid:'signupemailid',
     required: true,
 },{
@@ -34,7 +34,7 @@ const SignupPageFields: Input[] = [{
     type: "text",
     text_type: "password",
     placeholder: "Password",
-    pattern: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()-_=+{}|;:'",.<>?]).{10,100}$/, //contains 1-special char, capital letter, number and should have 10 to 100 characters
+    pattern: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9\s]).{10,}$/, //contains 1-special char, capital letter, number and should have minimum 10 characters
     minlen:10,
     maxlen:100,
     errorMessage: "Password should be 10 characters long. Add special characters, number and Capital Letters.",
@@ -50,6 +50,7 @@ const SignupPageFields: Input[] = [{
     text_type: "password",
     placeholder: "Enter password",
     label: "Confirm Password",
+    errorMessage: "Passwords don't match",
     required: true,
     datatestid:'signuppasswordconfirm'
 },
