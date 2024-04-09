@@ -17,7 +17,7 @@ export default {
     projects: [
         {
           displayName: 'unit-tests',
-          testMatch: ['<rootDir>/src/components/**/*.test.tsx', '<rootDir>/src/views/**/*.test.tsx'],
+          testMatch: ['<rootDir>/src/components/**/*.test.tsx', '<rootDir>/src/views/**/*.test.tsx', '<rootDir>/src/utils/**/*.test.tsx'],
           ...tsPreset,
           testEnvironment: 'jest-environment-jsdom',
           transform: {
